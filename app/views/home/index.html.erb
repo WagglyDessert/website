@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homepage</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <h1>Welcome to My Personal Website</h1>
+  <div class="gallery">
+    <div class="image-container">
+      <%= link_to teacher_path do %>
+        <%= image_tag('teacher.jpg', alt: 'Teacher Image') %>
+        <div class="image-overlay">
+          <p>Teacher Section</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="image-container">
+      <%= link_to software_engineer_path do %>
+        <%= image_tag('software_engineer.jpg', alt: 'Software Engineer Image') %>
+        <div class="image-overlay">
+          <p>Software Engineer Section</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="image-container">
+      <%= link_to phylogeneticist_path do %>
+        <%= image_tag('phylogeneticist.jpg', alt: 'Phylogeneticist Image') %>
+        <div class="image-overlay">
+          <p>Phylogeneticist Section</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="image-container">
+      <%= link_to writer_path do %>
+        <%= image_tag('writer.jpg', alt: 'Writer Image') %>
+        <div class="image-overlay">
+          <p>Writer Section</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>

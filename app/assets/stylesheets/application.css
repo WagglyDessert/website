@@ -13,3 +13,55 @@
  *= require_tree .
  *= require_self
  */
+ 
+ .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Space between images */
+}
+
+.image-container {
+  position: relative;
+  width: 300px; /* Adjust size as needed */
+  height: 200px; /* Adjust size as needed */
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
+  transition: opacity 0.5s ease;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with transparency */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.5s ease; /* Smooth transition for overlay visibility */
+}
+
+/* Dimming effect and overlay visibility on hover */
+.image-container:hover img {
+  opacity: 0.5; /* Dim the image */
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1; /* Show the overlay on hover */
+}
+
+/* Style for text inside the overlay */
+.image-overlay p {
+  font-size: 20px; /* Adjust font size as needed */
+  margin: 0;
+  text-align: center;
+}
