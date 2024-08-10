@@ -15,23 +15,27 @@
  */
  
  .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px; /* Space between images */
+  width: calc(100% - 20px);
+  max-width: 1200px; /* Optional: Set a max-width for better layout control */
+  margin: 20px auto; /* Center the gallery and add vertical spacing */
+  padding-right: 10px; /* Ensure extra space on the right */
+  box-sizing: border-box;
 }
 
 .image-container {
   position: relative;
-  width: 300px; /* Adjust size as needed */
-  height: 200px; /* Adjust size as needed */
+  width: 90%;
+  height: 60vh; /* Adjust size as needed */
   overflow: hidden;
 }
 
 .image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image covers the container */
+  object-fit: cover;
   transition: opacity 0.5s ease;
 }
 
@@ -64,4 +68,61 @@
   font-size: 20px; /* Adjust font size as needed */
   margin: 0;
   text-align: center;
+}
+
+.home_background {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  background-position: center;
+  display: flex; /* Optional: Center content using flexbox */
+  align-items: center; /* Optional: Center content vertically */
+  flex-direction: column; /* Stack header and gallery vertically */
+  align-items: center; /* Center content horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  padding: 20px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px 0; /* Adjust padding as needed */
+  color: white; /* Adjust text color for better visibility */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 5vw;
+  font-weight: bold;
+  text-shadow: 
+  10px 10px 0 rgb(0, 0, 0), 
+  -0.1px -0.1px 0 black,
+  0.1px -0.1px 0 black,
+  -0.1px 0.1px 0 black;
+}
+
+h2 {
+  margin: 0;
+  padding: 10px 0; /* Adjust padding as needed */
+  color: black; /* Adjust text color for better visibility */
+  font-family: 'Goudy Old Style', 'Lucida Handwriting', 'Comic Sans MS', cursive;
+  font-size: 2vw;
+  text-shadow: 
+  0.4px 0.4px 0 rgb(241, 15, 15), 
+  -0.4px -0.4px 0 white,
+  0.4px -0.4px 0 rgb(209, 250, 9),
+  -0.4px 0.4px 0 white;
 }
