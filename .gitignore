@@ -30,11 +30,14 @@
 !/tmp/storage/.keep
 
 /public/assets
+/public/videos
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+/app/assets/images
+/app/assets/videos
 
 /node_modules
