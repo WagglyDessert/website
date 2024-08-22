@@ -8,7 +8,6 @@
   <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
   
-  <!-- Optional: Add additional styles for layout and link -->
   <style>
     body {
       margin: 0;
@@ -122,7 +121,7 @@
       font-size: 14px;
       color: #fff703;
       position: relative;
-      top: 270px;
+      top: 290px;
       right: 200px;
     }
 
@@ -131,7 +130,7 @@
       font-size: 14px;
       color: #fff703;
       position: relative;
-      top: 140px;
+      top: 160px;
       left: 250px;
     }
 
@@ -149,7 +148,7 @@
   <a href="<%= root_path %>" class="back-link">Back to Homepage</a>
   
   <div class="container">
-    <h1>Teacher Section</h1>
+    <h1>Teacher</h1>
     <div class="paragraphs">
       <div class="paragraph-item left">
         <div class="paragraph-box">
@@ -166,7 +165,7 @@
           I helped revise the quarterly maps by advocating strongly for the inclusion of weekly projects and/or experiments in addition to spiraling concepts that were to be revisited and built upon several times throughout the year.
           My main goals as a teacher were to see students succeed and be engaged; by my sixth year, I saw over 90% growth in my students and had received highly-effective evaluations from my principal.</p>
         </div>
-        <%= video_tag '/videos/fire.mp4', controls: true, autoplay: false, loop: false, muted: false, class: 'video-class' %>
+        <%= video_tag '/videos/fire.mp4', controls: true, autoplay: true, loop: true, muted: true, class: 'video-class' %>
         <h3 class="image-caption2">VanDeGraaff Fire</h3>
         </div>
       <div class="paragraph-item left">
@@ -176,7 +175,7 @@
           Common examples include tailoring daily warm-ups to include culturally relevant topics, such as calculating the velocity of Lionel Messi’s penalty kicks or calculating the trajectory of Steph Curry’s long distance 3’s.
           By integrating culturally relevant examples and materials, I have seen firsthand how this approach can ignite students’ curiosity and drive their academic success.</p>
         </div>
-        <%= image_tag('teacher.jpg', alt: 'NA2') %>
+        <%= image_tag('tiny_house.jpg', alt: 'NA2') %>
         <h3 class="image-caption3">Tiny House Project</h3>
         </div>
     </div>
