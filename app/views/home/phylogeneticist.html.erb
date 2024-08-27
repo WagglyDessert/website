@@ -52,10 +52,11 @@
 
     .paragraph-item {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      margin: 0 100px;
+      margin: 0;
     }
 
     .paragraph-item.left {
@@ -66,7 +67,6 @@
       width: 200px; /* Adjust as needed */
       height: auto;
       border-radius: 8px; /* Optional: rounded corners for images */
-      margin: 0 100px;
     }
     
     h1 {
@@ -88,7 +88,7 @@
       text-align: left; /* Align text to the left */
       line-height: 1.6; /* Adjust line height for readability */
       margin: 0;
-      color: orange;
+      color: white;
     }
 
     .paragraph-box {
@@ -104,8 +104,6 @@
       font-size: 14px;
       color: #fff703;
       position: relative;
-      top: 300px;
-      left: 200px;
     }
 
     .image-caption2 {
@@ -113,8 +111,6 @@
       font-size: 14px;
       color: #fff703;
       position: relative;
-      top: 290px;
-      right: 200px;
     }
 
     .image-caption3 {
@@ -122,15 +118,6 @@
       font-size: 14px;
       color: #fff703;
       position: relative;
-      top: 160px;
-      left: 250px;
-    }
-
-    .video-class {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      max-height: 550px;
     }
   </style>
 </head>
@@ -142,28 +129,61 @@
     <div class="paragraphs">
       <div class="paragraph-item left">
         <div class="paragraph-box">
-        <p>Raptor Rehabilitation</p>
+        <p>My foray into animal care, rehabilitation, and genetics began in high school when I was an ambassador for the 
+          <a href="https://tetonraptorcenter.org/" target="_blank" style="color: #ffc9c9; text-decoration: underline;">Teton Raptor Center</a> 
+          in Wilson, Wyoming. There I assisted the master falconer with the care and rehabilitation of injured birds of prey.
+          In addition, I assisted with, and lead, many educational programs at the center, at schools, and at various other locations throughout the county to teach residents and visitors about different kinds of birds of prey.
+          We had a handful of permanently injured birds that we referred to as "residents" who could not successfully be released into the wild and were therefore full-time participants in our educational programs.
+        </p>
         </div>
-        <%= video_tag '/videos/motor.mp4', controls: false, autoplay: true, loop: true, muted: true, class: 'video-class' %>
-        <h3 class="image-caption">Three Phase Motor</h3>
+        <%= image_tag('trc_cover.jpg', alt: 'TRC Image') %>
+        <h3 class="image-caption">TRC Newsletter</h3>
       </div>
 
       <div class="paragraph-item">
         <div class="paragraph-box">
-        <p>Field Museum.</p>
+        <p>After a year working at the Teton Raptor Center (and helping out during my summer my freshman year of college), I was able to use the experience to connect with ornithologists at the Field Museum in Chicago.
+          I started off as a summer intern, and then continued to work at the Field Museum part-time during my last two years of college, and full-time during the summer after.
+          At the Field Museum, I aided 
+          <a href="http://symbiont.ansp.org/weckstein_lab/pastmembers.html" target="_blank" style="color: #ffc9c9; text-decoration: underline;">Dr. Weckstein</a>
+          on his phylogenetic research of songbirds and their lice--namely the study of the Amblyceran louse Ricinus and how it co-speciated with songbirds around the world.
+          Inside the Prtizker Lab at the museum, I extracted DNA from speciments, then amplified, sequenced, and analyzed that DNA to create evolutionary trees of Ricinus and its hosts.
+          We used cytochrome oxydase 1 (CO1) mtDNA as well as nucleic DNA to date co-speciation events of different species of Ricinus with their hosts.
+          In addition, I contributed to the avian malaria research project (for those who don't know, malaria is first and foremost a virus that affects birds, and then evolved later to affect humans).
+        </p>
         </div>
-        <%= video_tag '/videos/fire.mp4', controls: true, autoplay: true, loop: true, muted: true, class: 'video-class' %>
-        <h3 class="image-caption2">VanDeGraaff Fire</h3>
-        </div>
-        
+        <%= image_tag('phylogeneticist.jpg', alt: 'Phylogeneticist Image') %>
+        <h3 class="image-caption2">Fun Times in the Pritzker Lab</h3>
+      </div>
+
       <div class="paragraph-item left">
         <div class="paragraph-box">
-        <p>Black Beauty Ranch.</p>
+        <p>The summer of my junior year at Northwestern I had an opportunity to perform 
+          <a href="https://www.fieldmuseum.org/science/microsites/southern-amazonian-birds-and-their-symbionts/outputs/project-news" target="_blank" style="color: #ffc9c9; text-decoration: underline;">phylogenetic research on antbirds in Brazil.</a> 
+          A combination of securing a $3k grant from Weinberg College, being a Brady Scholar of Civics and Ethics (which required work or study abroad), studying to obtain a minor in portuguese, and Dr. Weckstein having a fantastic connection from his PhD program at LSU afforded me the opportunity.
+          I lived in Belem, Para, Brazil for three months and worked at the Museu Paraense Emilio Goeldi where I conducted evolutionary genetics on amazonian antbirds.
+          Much of the research process was similar to what I was doing at the Field Museum, with the exception of the extraction technique being phenol-chloroform based instead of magnesium-chloride.
+        </p>
         </div>
-        <%= image_tag('tiny_house.jpg', alt: 'NA2') %>
-        <h3 class="image-caption3">Tiny House Project</h3>
+        <%= image_tag('field_museum.jpg', alt: 'FM') %>
+        <h3 class="image-caption">Pipettin'</h3>
+      </div>
+
+      <div class="paragraph-item">
+        <div class="paragraph-box">
+        <p>My boss, Dr. Weckstein, secured a tenured professor position at Drexel University the fall after I graduated from Northwestern, and so my time at the Field Museum came to an end.
+          I went to Murchison, Texas, where I interned at the nation's largest animal sanctuary, the 
+          <a href="https://www.humanesociety.org/blackbeautyranch" target="_blank" style="color: #ffc9c9; text-decoration: underline;">Cleveland Amory Black Beauty Ranch,</a> 
+          a 1,400-acre sanctuary eponymously named after Cleveland Amory's famous novel and home to over 650 domestic and exotic animals.
+          I performed daily animal care duties for all the animals saves the horses and zebra-- so the chimpanzees, iguanas, macaques, gibbons, cows, emus, tigers, elati, goats, nilgai, camels, etc.
+          In addition, I provided enrichment opportunities for the animals, and assisted the on-site veterinarian with operations given my experience with that from the Teton Raptor Center.
+          I also helped lead tours for visitors who signed up to visit the facility.
+        </p>
         </div>
+        <%= image_tag('bbr.jpg', alt: 'bbr') %>
+        <h3 class="image-caption2">Abused Animals Living Out the Rest of Their Lives in Peace</h3>
+      </div>
     </div>
-    </div>
+  </div>
 </body>
 </html>
