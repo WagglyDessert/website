@@ -120,10 +120,10 @@
       videoOverlay.style.display = 'flex'; // Show the video overlay
       video.play(); // Play the video
 
-      // Redirect to the software engineer path after the video ends
-      video.addEventListener('ended', () => {
-        window.location.href = link.href;
-      });
+      setTimeout(() => {
+        video.pause(); // Pause the video after half a second
+        window.location.href = link.href; // Redirect to the software engineer path
+      }, 1000); // 500 ms = half a second
     });
 
     window.addEventListener('beforeunload', () => {
