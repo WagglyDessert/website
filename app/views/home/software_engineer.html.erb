@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Software Engineer</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
   <style>
     body {
       margin: 0;
@@ -12,10 +17,38 @@
       font-family: Arial, sans-serif;
     }
 
+    .container {
+      position: relative;
+      z-index: 1; /* Above the particles background */
+      text-align: left; /* Center text */
+      padding: 100px;
+      color: white; /* Ensure readability on dark background */
+      box-sizing: border-box;
+      width: 90%; /* Set the container's width as a percentage of the parent (80% of screen width) */
+      max-width: 1200px; /* Optionally limit the maximum width to something reasonable */
+      margin: 0 auto;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: red;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      z-index: 2; /* Above the particles */
+    }
+
+    .back-link:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
     /* Container for the scrolling textboxes */
     .scrolling-text-container {
       position: absolute;
-      top: 50%; /* Center the container vertically */
+      top: 80%; /* Center the container vertically */
       left: 0%;
       width: 100%;
       height: 100px; /* Container height */
@@ -36,6 +69,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Allow manual positioning */
+      animation-delay: -39.8s;
     }
 
     /* Second textbox style (starts slightly to the right of the first one) */
@@ -49,7 +83,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Position it independently */
-      animation-delay: -1.5s;
+      animation-delay: -1.4s;
     }
 
     .scrolling-textbox-3 {
@@ -140,7 +174,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Position it independently */
-      animation-delay: -24s;
+      animation-delay: -21s;
     }
 
     .scrolling-textbox-10 {
@@ -153,7 +187,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Position it independently */
-      animation-delay: -26s;
+      animation-delay: -23s;
     }
 
     .scrolling-textbox-11 {
@@ -166,7 +200,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Position it independently */
-      animation-delay: -29.5s;
+      animation-delay: -26s;
     }
 
     .scrolling-textbox-12 {
@@ -179,7 +213,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Position it independently */
-      animation-delay: -31.5s;
+      animation-delay: -28s;
     }
 
     .scrolling-textbox-13 {
@@ -192,7 +226,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Position it independently */
-      animation-delay: -35s;
+      animation-delay: -30.8s;
     }
 
     .scrolling-textbox-14 {
@@ -205,7 +239,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Position it independently */
-      animation-delay: -38s;
+      animation-delay: -32.7s;
     }
 
     .scrolling-textbox-15 {
@@ -231,46 +265,7 @@
       white-space: nowrap;
       animation: move-text 40s linear infinite; /* Move text from right to left */
       position: absolute; /* Position it independently */
-      animation-delay: -38s;
-    }
-
-    .scrolling-textbox-17 {
-      display: inline-block;
-      padding: 10px 20px;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      border-radius: 8px;
-      white-space: nowrap;
-      animation: move-text 40s linear infinite; /* Move text from right to left */
-      position: absolute; /* Position it independently */
-      animation-delay: -35s;
-    }
-
-    .scrolling-textbox-18 {
-      display: inline-block;
-      padding: 10px 20px;
-      color: black;
-      font-size: 24px;
-      font-weight: bold;
-      border-radius: 8px;
-      white-space: nowrap;
-      animation: move-text 40s linear infinite; /* Move text from right to left */
-      position: absolute; /* Position it independently */
-      animation-delay: -38s;
-    }
-
-    .scrolling-textbox-19 {
-      display: inline-block;
-      padding: 10px 20px;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      border-radius: 8px;
-      white-space: nowrap;
-      animation: move-text 40s linear infinite; /* Move text from right to left */
-      position: absolute; /* Position it independently */
-      animation-delay: -35s;
+      animation-delay: -38.1s;
     }
 
     /* Keyframes for moving the first textbox */
@@ -347,18 +342,6 @@
       background-color: #f5f516;
     }
 
-    .scrolling-textbox-17 {
-      background-color: #ed21e3;
-    }
-
-    .scrolling-textbox-18 {
-      background-color: #f5f516;
-    }
-
-    .scrolling-textbox-19 {
-      background-color: #ed21e3;
-    }
-
     /* Hover effect: change background color */
     .scrolling-text-container:hover .scrolling-textbox,
     .scrolling-text-container:hover .scrolling-textbox-2,
@@ -375,10 +358,7 @@
     .scrolling-text-container:hover .scrolling-textbox-13,
     .scrolling-text-container:hover .scrolling-textbox-14,
     .scrolling-text-container:hover .scrolling-textbox-15,
-    .scrolling-text-container:hover .scrolling-textbox-16,
-    .scrolling-text-container:hover .scrolling-textbox-17,
-    .scrolling-text-container:hover .scrolling-textbox-18,
-    .scrolling-text-container:hover .scrolling-textbox-19 {
+    .scrolling-text-container:hover .scrolling-textbox-16 {
       animation-play-state: paused; /* Pauses the animation for all textboxes */
     }
 
@@ -406,28 +386,29 @@
   </style>
 </head>
 <body>
+  <a href="<%= root_path %>" class="back-link">Back to Homepage</a>
+  <div class="container">
+    <h2 style="color: black; font-family: Neue Montreal, sans-serif; font-weight: 400; font-size: 82px;">Full-Stack Software Engineer</h3>
   <!-- Container for the moving textboxes -->
-  <div class="scrolling-text-container">
+    <div class="scrolling-text-container">
     <!-- Multiple textboxes with manual initial positions and staggered animation -->
-    <div class="scrolling-textbox">Rails</div>
-    <div class="scrolling-textbox-2">CSS</div>
-    <div class="scrolling-textbox-3">JavaScript</div>
-    <div class="scrolling-textbox-4">CircleCI</div>
-    <div class="scrolling-textbox-5">PostgreSQL</div>
-    <div class="scrolling-textbox-6">ActiveRecord</div>
-    <div class="scrolling-textbox-7">RSpec</div>
-    <div class="scrolling-textbox-8">Test Driven Development</div>
-    <div class="scrolling-textbox-9">GitHub</div>
-    <div class="scrolling-textbox-10">Python</div>
-    <div class="scrolling-textbox-11">Restful APIs</div>
-    <div class="scrolling-textbox-12">React</div>
-    <div class="scrolling-textbox-13">Geolocation</div>
-    <div class="scrolling-textbox-14">SimpleCov</div>
-    <div class="scrolling-textbox-15">Faraday</div>
-    <div class="scrolling-textbox-16">Bcrypt</div>
-    <div class="scrolling-textbox-17">OAuth</div>
-    <div class="scrolling-textbox-18">JSON</div>
-    <div class="scrolling-textbox-19">Webscraping</div>
+      <div class="scrolling-textbox">Rails</div>
+      <div class="scrolling-textbox-2">CSS</div>
+      <div class="scrolling-textbox-3">JavaScript</div>
+      <div class="scrolling-textbox-4">CircleCI</div>
+      <div class="scrolling-textbox-5">PostgreSQL</div>
+      <div class="scrolling-textbox-6">ActiveRecord</div>
+      <div class="scrolling-textbox-7">RSpec</div>
+      <div class="scrolling-textbox-8">Test Driven Development</div>
+      <div class="scrolling-textbox-9">GitHub</div>
+      <div class="scrolling-textbox-10">Python</div>
+      <div class="scrolling-textbox-11">Restful APIs</div>
+      <div class="scrolling-textbox-12">OAuth</div>
+      <div class="scrolling-textbox-13">Geolocation</div>
+      <div class="scrolling-textbox-14">JSON</div>
+      <div class="scrolling-textbox-15">Faraday</div>
+      <div class="scrolling-textbox-16">Webscraping</div>
+    </div>
   </div>
 </body>
 </html>
