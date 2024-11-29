@@ -9,6 +9,9 @@
   
   <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -393,10 +396,24 @@
       display: flex;
       justify-content: space-between;
       gap: 20px;
+      width: 90%;
       max-width: 1200px;
       margin: 20px auto;
       padding: 20px;
       background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-container:nth-of-type(odd) {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #252929;  /* Apply this color to even-numbered project containers */
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -413,11 +430,24 @@
       font-size: 2rem;
       font-weight: bold;
       color: #333;
+      text-shadow: none;
     }
 
-    .project-scope, .time-frame, .description {
+    .title-space_odd h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #f7f5f5;
+      text-shadow: none;
+    }
+
+    .project-scope, .description {
       font-size: 1.1rem;
       color: #555;
+    }
+
+    .project-scope_odd, .description_odd {
+      font-size: 1.1rem;
+      color: #f7f5f5;
     }
 
     .tools {
@@ -428,13 +458,32 @@
       gap: 10px; /* Add space between the bubbles */
     }
 
+     .tools_odd {
+      font-size: 1.1rem;
+      color: #555;
+      display: flex; /* Use flexbox to arrange the tools horizontally */
+      flex-wrap: wrap; /* Allow the bubbles to wrap to the next line if necessary */
+      gap: 10px; /* Add space between the bubbles */
+    }
+
     .tools .tool {
       background-color: #007bff; /* A blue color for the bubble */
       color: white; /* Text color inside the bubble */
-      padding: 10px 15px; /* Add some padding for the bubble effect */
-      border-radius: 20px; /* Round the edges of the bubble */
+      padding: 5px 12px; /* Add some padding for the bubble effect */
+      border-radius: 12px; /* Round the edges of the bubble */
       font-weight: bold; /* Make the text bold */
-      font-size: 1.1rem; /* Ensure the text is a readable size */
+      font-size: 0.9rem; /* Ensure the text is a readable size */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for the bubble effect */
+      transition: transform 0.3s ease; /* Add a transition for hover effect */
+    }
+
+    .tools_odd .tool {
+      background-color: #07b9fa; /* A blue color for the bubble */
+      color: black; /* Text color inside the bubble */
+      padding: 5px 12px; /* Add some padding for the bubble effect */
+      border-radius: 12px; /* Round the edges of the bubble */
+      font-weight: bold; /* Make the text bold */
+      font-size: 0.9rem; /* Ensure the text is a readable size */
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for the bubble effect */
       transition: transform 0.3s ease; /* Add a transition for hover effect */
     }
@@ -452,31 +501,41 @@
     }
 
     .repo-link a {
-      font-size: 1.1rem;
-      color: #007bff;
-      text-decoration: none;
+      display: inline-block; /* Make the link behave like a block for better control */
+      padding: 5px 12px; /* Add padding around the text */
+      background-color: #064028; /* Set background color */
+      color: #44dbd6; /* Text color */
+      font-size: 0.9rem; /* Font size */
+      text-decoration: none; /* Remove underline */
+      border-radius: 12px; /* Rounded corners */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+      font-family: "Monaco", monospace;
     }
 
     .repo-link a:hover {
-      text-decoration: underline;
+      background-color: #0056b3; /* Darken the background on hover */
+      transform: scale(1.05); /* Slightly enlarge the link on hover */
     }
 
     /* Right section - Project images */
     .project-images {
-      flex: 0 0 300px;
+      flex: 0 0 600px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      align-items: center;
+      align-items: flex-start; /* Align images to the left */
+      margin-left: 20px;
     }
 
     /* Big image */
     .big-image {
       width: 100%;
-      max-height: 350px;
+      max-height: 450px;
       object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
     }
 
     /* Small images */
@@ -484,7 +543,8 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      width: 100%;
+      width: 80%;
+      margin-left: 60px;
     }
 
     .small-images img {
@@ -528,13 +588,14 @@
   </div>
 
   <div class="project-container">
-    <!-- Left section: Project info -->
+    <!-- Left section: Project info for THIRD SPACE -->
     <div class="project-info">
       <div class="title-space">
         <h2>Third Space</h2>
       </div>
 
       <div class="project-scope">
+        <i class="fas fa-clock"></i>
         <strong>Project Scope Time:</strong>
         <p>150 hours</p>
       </div>
@@ -558,6 +619,7 @@
         <div class="tool">Postman</div>
         <div class="tool">SendGrid</div>
         <div class="tool">OAuth</div>
+        <div class="tool">APIs</div>
         <div class="tool">Visual Studio</div>
       </div>
 
@@ -567,8 +629,8 @@
       </div>
 
       <div class="repo-link">
-        <a href="https://github.com/shawndcarpenter/third_space_be" target="_blank">View BE Code Repository</a><br>
-        <a href="https://github.com/shawndcarpenter/third_space_fe" target="_blank">View FE Code Repository</a>
+        <a href="https://github.com/shawndcarpenter/third_space_be" target="_blank">BE Code Repository</a><br><br>
+        <a href="https://github.com/shawndcarpenter/third_space_fe" target="_blank">FE Code Repository</a>
       </div>
     </div>
 
@@ -579,17 +641,82 @@
       </div>
 
       <div class="small-images">
-        <%= image_tag 'third_space_home.png', alt: 'Image 1', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_home.png')}')" %>
-        <%= image_tag 'third_space_search.png', alt: 'Image 2', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_search.png')}')" %>
-        <%= image_tag 'third_space_recommendations.png', alt: 'Image 3', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_recommendations.png')}')" %>
-        <%= image_tag 'third_space_space.png', alt: 'Image 4', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_space.png')}')" %>
+        <%= image_tag 'third_space_home.png', alt: 'Image 1', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_home.png')}', 'big-image')" %>
+        <%= image_tag 'third_space_search.png', alt: 'Image 2', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_search.png')}', 'big-image')" %>
+        <%= image_tag 'third_space_recommendations.png', alt: 'Image 3', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_recommendations.png')}', 'big-image')" %>
+        <%= image_tag 'third_space_space.png', alt: 'Image 4', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_space.png')}', 'big-image')" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-container">
+    <!-- Left section: Project info MON RECETTE-->
+    <div class="project-info">
+      <div class="title-space_odd">
+        <h2>Mon Recette</h2>
+      </div>
+
+      <div class="project-scope_odd">
+        <i class="fas fa-clock"></i>
+        <strong>Project Scope Time:</strong>
+        <p>80 hours</p>
+      </div>
+
+      <div class="tools_odd">
+        <strong style="color: white;">Tools Used:</strong>
+        <div class="tool">Rails</div>
+        <div class="tool">CSS</div>
+        <div class="tool">TypeScript</div>
+        <div class="tool">CircleCI</div>
+        <div class="tool">PostgreSQL</div>
+        <div class="tool">Cypress</div>
+        <div class="tool">RSpec</div>
+        <div class="tool">Test Driven Development</div>
+        <div class="tool">Ruby</div>
+        <div class="tool">Heroku</div>
+        <div class="tool">Figma</div>
+        <div class="tool">GitHub</div>
+        <div class="tool">JavaScript</div>
+        <div class="tool">React</div>
+        <div class="tool">Postman</div>
+        <div class="tool">Nokogiri</div>
+        <div class="tool">Webscraping</div>
+        <div class="tool">APIs</div>
+        <div class="tool">Visual Studio</div>
+      </div>
+
+      <div class="description_odd">
+        <strong>Description:</strong>
+        <p>There are plenty of great websites with amazing recipes that will turn any evening into a memory that will last a lifetime. That downside is that those recipes are saved in multiple locations, not in a single place. With Mon Recette, you can import and save recipes from:
+          <br>
+          <br>
+          TheMealDB | Food Network | All Recipes | A Wicked Whisk | Taste of Home</p>
+      </div>
+
+      <div class="repo-link">
+        <a href="https://github.com/mon-recette/mon_recette_be" target="_blank">BE Code Repository</a><br><br>
+        <a href="https://github.com/mon-recette/mon-recette-fe" target="_blank">FE Code Repository</a>
+      </div>
+    </div>
+
+    <!-- Right section: Project images -->
+    <div class="project-images">
+      <div class="big-image-container">
+        <%= image_tag 'mon_recette_home.png', alt: "Big Image", class: "big-image", id: "big-image-2"%>
+      </div>
+
+      <div class="small-images">
+        <%= image_tag 'mon_recette_home.png', alt: 'Image 1', class: 'small-image', onclick: "changeBigImage('#{asset_path('mon_recette_home.png')}', 'big-image-2')" %>
+        <%= image_tag 'mon_recette_search.png', alt: 'Image 2', class: 'small-image', onclick: "changeBigImage('#{asset_path('mon_recette_search.png')}', 'big-image-2')" %>
+        <%= image_tag 'mon_recette_scrape.png', alt: 'Image 3', class: 'small-image', onclick: "changeBigImage('#{asset_path('mon_recette_scrape.png')}', 'big-image-2')" %>
+        <%= image_tag 'mon_recette_favorites.png', alt: 'Image 4', class: 'small-image', onclick: "changeBigImage('#{asset_path('mon_recette_favorites.png')}', 'big-image-2')" %>
       </div>
     </div>
   </div>
 
   <script>
-    function changeBigImage(imageSrc) {
-      const bigImage = document.getElementById('big-image');
+    function changeBigImage(imageSrc, bigImageId) {
+      const bigImage = document.getElementById(bigImageId);
       bigImage.src = imageSrc;  // Update the src of the big image based on the clicked thumbnail
     }
   </script>
