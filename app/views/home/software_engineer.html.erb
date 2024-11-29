@@ -13,8 +13,13 @@
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Prevents any scrollbar from appearing */
+      overflow: auto;
       font-family: Arial, sans-serif;
+    }
+
+    html {
+      height: 100%; /* Ensure full height for the document */
+      overflow-y: scroll; /* Enable vertical scrolling */
     }
 
     .container {
@@ -383,6 +388,117 @@
     .scrolling-textbox-19:hover {
       filter: invert(1);
     }
+
+    .project-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Left section - Project info */
+    .project-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .title-space h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .project-scope, .time-frame, .description {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .tools {
+      font-size: 1.1rem;
+      color: #555;
+      display: flex; /* Use flexbox to arrange the tools horizontally */
+      flex-wrap: wrap; /* Allow the bubbles to wrap to the next line if necessary */
+      gap: 10px; /* Add space between the bubbles */
+    }
+
+    .tools .tool {
+      background-color: #007bff; /* A blue color for the bubble */
+      color: white; /* Text color inside the bubble */
+      padding: 10px 15px; /* Add some padding for the bubble effect */
+      border-radius: 20px; /* Round the edges of the bubble */
+      font-weight: bold; /* Make the text bold */
+      font-size: 1.1rem; /* Ensure the text is a readable size */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for the bubble effect */
+      transition: transform 0.3s ease; /* Add a transition for hover effect */
+    }
+
+    .tools .tool:hover {
+      transform: scale(1.1); /* Slightly enlarge the bubble when hovered */
+    }
+
+    .description p {
+      margin: 0;
+    }
+
+    .repo-link {
+      margin-top: 10px;
+    }
+
+    .repo-link a {
+      font-size: 1.1rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .repo-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Right section - Project images */
+    .project-images {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* Big image */
+    .big-image {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Small images */
+    .small-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+
+    .small-images img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .small-images img:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -410,5 +526,72 @@
       <div class="scrolling-textbox-16">Webscraping</div>
     </div>
   </div>
+
+  <div class="project-container">
+    <!-- Left section: Project info -->
+    <div class="project-info">
+      <div class="title-space">
+        <h2>Third Space</h2>
+      </div>
+
+      <div class="project-scope">
+        <strong>Project Scope Time:</strong>
+        <p>150 hours</p>
+      </div>
+
+      <div class="tools">
+        <strong>Tools Used:</strong>
+        <div class="tool">Rails</div>
+        <div class="tool">CSS</div>
+        <div class="tool">JavaScript</div>
+        <div class="tool">CircleCI</div>
+        <div class="tool">PostgreSQL</div>
+        <div class="tool">ActiveRecord</div>
+        <div class="tool">RSpec</div>
+        <div class="tool">Test Driven Development</div>
+        <div class="tool">Ruby</div>
+        <div class="tool">Bootstrap</div>
+        <div class="tool">Figma</div>
+        <div class="tool">GitHub</div>
+        <div class="tool">Miro</div>
+        <div class="tool">Postico</div>
+        <div class="tool">Postman</div>
+        <div class="tool">SendGrid</div>
+        <div class="tool">OAuth</div>
+        <div class="tool">Visual Studio</div>
+      </div>
+
+      <div class="description">
+        <strong>Description:</strong>
+        <p>This is an application that finds “third spaces” by mood or other criteria such as lighting, accessibility, etc. that allows neurotypical and neurodivergent people to feel more comfortable going out.</p>
+      </div>
+
+      <div class="repo-link">
+        <a href="https://github.com/shawndcarpenter/third_space_be" target="_blank">View BE Code Repository</a><br>
+        <a href="https://github.com/shawndcarpenter/third_space_fe" target="_blank">View FE Code Repository</a>
+      </div>
+    </div>
+
+    <!-- Right section: Project images -->
+    <div class="project-images">
+      <div class="big-image-container">
+        <%= image_tag 'third_space_home.png', alt: "Big Image", class: "big-image", id: "big-image"%>
+      </div>
+
+      <div class="small-images">
+        <%= image_tag 'third_space_home.png', alt: 'Image 1', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_home.png')}')" %>
+        <%= image_tag 'third_space_search.png', alt: 'Image 2', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_search.png')}')" %>
+        <%= image_tag 'third_space_recommendations.png', alt: 'Image 3', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_recommendations.png')}')" %>
+        <%= image_tag 'third_space_space.png', alt: 'Image 4', class: 'small-image', onclick: "changeBigImage('#{asset_path('third_space_space.png')}')" %>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function changeBigImage(imageSrc) {
+      const bigImage = document.getElementById('big-image');
+      bigImage.src = imageSrc;  // Update the src of the big image based on the clicked thumbnail
+    }
+  </script>
 </body>
 </html>
