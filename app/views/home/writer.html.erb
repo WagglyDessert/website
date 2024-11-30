@@ -11,9 +11,10 @@
     <title>Novelist</title>
     <style>
         body, html {
-            height: 100%;  /* Ensure the body and html elements can take full height */
             font-family: Arial, sans-serif;
             line-height: 1.2;
+            overflow-x: hidden; /* Disable horizontal scrolling */
+            overflow-y: auto;
         }
 
         /* Header Section */
@@ -28,7 +29,6 @@
             z-index: 1000;
             text-align: center;
             width: 100%%;
-            overflow: hidden;
         }
 
         .henny-penny-regular {
@@ -86,23 +86,49 @@
 
         /* Main Content */
         .content {
-            margin-top: 300px;
+            padding-top: 0px;
             /* Removed margin-top; section margins will handle spacing */
         }
 
         section {
-            padding: 50px;
-            margin-bottom: 20px;
+          padding: 50px;
+          margin-bottom: 20px;
+          padding-top: 400px;
         }
 
         section h2 {
             margin-bottom: 20px;
+            text-shadow: none;
         }
 
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
+      #home {
+        background-color: white; /* Light grey background */
+      }
+
+      #books {
+        background-image: url('about-bg.jpg');
+        background-size: cover;
+        padding: 50px;
+        color: black;
+      }
+      
+      #about {
+        background-image: url('about-bg.jpg'); /* Background image for about section */
+        background-size: cover;
+        padding: 50px;
+        color: black;
+      }
+      
+      #blog {
+        background-color: blue; /* Green background for contact section */
+        padding: 50px;
+        color: black;
+      }
+      #contact {
+        background-color: #4CAF50; /* Green background for contact section */
+        padding: 50px;
+        color: white;
+      }
 
     </style>
 </head>
@@ -127,16 +153,31 @@
   <!-- Main Content Sections -->
   <div class="content">
     <section id="home">
-        <h2>Home</h2>
-        <p>Welcome to the Home section!</p>
+        <h2 style="font-style: italic;">
+        He could see the spaceship vividly, and the twelve gray aliens walking single file towards the bakery.
+        The door opened, and their smiling faces and bright souls paraded on in.
+        Rosaline had a mop on stand-by for the inevitable goo puddles, those little pools of happiness.
+        </h2><h2>- BAKER'S DOZEN by Nathan Trautenberg</h2>
     </section>
     <section id="books">
         <h2>Books</h2>
-        <p>Explore our collection of books here.</p>
+        <p>I am currently submitting my first manuscript, BAKER'S DOZEN, to literary agents.
+          It is a humorous satire about a man who struggles to do what's right for himself, even if it means letting others down.
+          The story is told from multiple different characters points of views, and although a satire at heart, reads like an espionage thriller. 
+        </p>
     </section>
     <section id="about">
         <h2>About</h2>
-        <p>Learn more about our mission and vision.</p>
+        <p>I began writing my first novel when I was sitting at a cubicle at work, bored out of my mind.
+          I didn't realize I was going to write a novel, it just sort of happened.
+          Boredom is a wonderful thing-- it is the impetus for creativity.
+          And now I also have the plots to two more books, one screenplay, and two series worked out.
+          I need more time in the day to write!
+          <br><br>
+          I didn't study creative writing in school, but rather philosophy and science. 
+          My propensity for these subjects bleeds through my pen and colors my writing.
+          While I write speculative fiction, all my themes relate to real life.
+        </p>
     </section>
     <section id="blog">
         <h2>Blog</h2>
