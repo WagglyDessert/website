@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Kalnia+Glaze&family=Kranky&family=Poiret+One&family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
     <title>Novelist</title>
     <style>
         body, html {
@@ -25,7 +25,7 @@
             right: 0;
             background-color: white;
             color: black;
-            padding: 20px 0;
+            padding: 0px 0;
             z-index: 1000;
             text-align: center;
             width: 100%%;
@@ -37,11 +37,62 @@
           font-style: normal;
         }
 
+        .kalnia-glaze {
+          font-family: "Kalnia Glaze", serif;
+          font-optical-sizing: auto;
+          font-weight: 400;
+          font-style: normal;
+          font-variation-settings:
+            "wdth" 100;
+        }
+
+        .zen-tokyo-zoo-regular {
+          font-family: "Zen Tokyo Zoo", system-ui;
+          font-weight: 400;
+          font-style: normal;
+        }
+
+        .kranky-regular {
+          font-family: "Kranky", serif;
+          font-weight: 400;
+          font-style: normal;
+        }
+
         .logo {
           max-width: 100px;
           max-height: 100x;
-          padding: 5px 0px;
+          padding: 52px 0px;
           margin: 0 auto;
+          position: relative;
+        }
+
+        .logo img {
+            width: 100px; /* Same width for both JPG and GIF */
+            height: 100px; /* Same height for both JPG and GIF */
+            display: block;
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        /* Initially, hide the GIF and show the JPG */
+        .logo img.gif {
+            width: 200px; /* Same width for both JPG and GIF */
+            height: 200px;
+            opacity: 0;
+            top: -65px;            /* Ensure the GIF is in the same position as the JPG */
+            left: -55px; 
+        }
+
+        /* On hover, show the GIF and hide the JPG */
+        .logo:hover img.jpg {
+            opacity: 0;
+        }
+
+        .logo:hover img.gif {
+            opacity: 1;
         }
 
         .name {
@@ -93,42 +144,70 @@
         section {
           padding: 50px;
           margin-bottom: 20px;
-          padding-top: 400px;
+          padding-top: 300px;
         }
 
         section h2 {
             margin-bottom: 20px;
             text-shadow: none;
+            font-family: "Poiret One", sans-serif;
         }
 
-      #home {
-        background-color: white; /* Light grey background */
-      }
+        hr {
+            border: 2;
+            border-top: 2px solid gray;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: black;
+        }
 
-      #books {
-        background-image: url('about-bg.jpg');
-        background-size: cover;
-        padding: 50px;
-        color: black;
-      }
-      
-      #about {
-        background-image: url('about-bg.jpg'); /* Background image for about section */
-        background-size: cover;
-        padding: 50px;
-        color: black;
-      }
-      
-      #blog {
-        background-color: blue; /* Green background for contact section */
-        padding: 50px;
-        color: black;
-      }
-      #contact {
-        background-color: #4CAF50; /* Green background for contact section */
-        padding: 50px;
-        color: white;
-      }
+        #home {
+          background-image: url('<%= asset_path("bakery_copy.png") %>');
+          background-size: cover;
+          background-position: center center; /* Ensure the image is centered */
+          height: 60vh;  /* Full viewport height */
+          color: white;
+          background-color: black; /* Light grey background */
+        }
+
+        #books {
+          color: black;
+          font-family: "Kranky", Serif;
+          font-size: 32px;
+        }
+        
+        #about {
+          color: black;
+          font-family: "Kranky", Serif;
+          font-size: 32px;
+          margin-top: -300px;
+        }
+        
+        #blog {
+          background-color: blue; /* Green background for contact section */
+          padding: 0px;
+          color: black;
+        }
+
+        #contact {
+          background-color: #4CAF50; /* Green background for contact section */
+          padding: 0px;
+          color: white;
+        }
+
+        .small-image {
+          max-width: 200px;
+          height: auto;
+          float: right;
+          margin: 20px;
+        }
+
+        .small-image-2 {
+          max-width: 200px;
+          height: auto;
+          float: left;
+          margin: 20px;
+        }
 
     </style>
 </head>
@@ -137,7 +216,8 @@
     <!-- Header Section with Logo and Navigation -->
   <div class="header">
     <div class="logo">
-      <%= image_tag 'hank.jpg', alt: 'logo', class: 'logo' %>
+      <%= image_tag 'hank.jpg', alt: 'logo', class: 'logo-img jpg' %>
+      <%= image_tag 'hank.gif', alt: 'logo animated', class: 'logo-img gif' %>
     </div>
     <div class="name">
         Nathan Trautenberg
@@ -153,40 +233,71 @@
   <!-- Main Content Sections -->
   <div class="content">
     <section id="home">
-        <h2 style="font-style: italic;">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h2 style="font-style: italic; color: black; font-size: 28px; background-color: rgba(229, 245, 245, 0.2); padding: 10px">
         He could see the spaceship vividly, and the twelve gray aliens walking single file towards the bakery.
         The door opened, and their smiling faces and bright souls paraded on in.
         Rosaline had a mop on stand-by for the inevitable goo puddles, those little pools of happiness.
-        </h2><h2>- BAKER'S DOZEN by Nathan Trautenberg</h2>
+        </h2>
+        <h2 style="color: black; font-size: 28px; text-shadow: 2px 2px 4px red; padding: 10px;">- BAKER'S DOZEN by Nathan Trautenberg</h2>
     </section>
     <section id="books">
+        <hr>
         <h2>Books</h2>
+        <%= image_tag 'bd_cover.png', class: 'small-image' %>
         <p>I am currently submitting my first manuscript, BAKER'S DOZEN, to literary agents.
-          It is a humorous satire about a man who struggles to do what's right for himself, even if it means letting others down.
-          The story is told from multiple different characters points of views, and although a satire at heart, reads like an espionage thriller. 
+        Baker’s Dozen tells the story of Eugene Schumaker, a kind-hearted bug-lover who gets caught up in a destructive cycle of greed and guilt when he unexpectedly becomes the CEO of a multibillion-dollar train and oil business, but with the help of friends and pastry-loving aliens, is reminded of his life’s true purpose.
+        It is a humorous satire about a man who struggles to do what's right for himself, even if it means letting others down.
+        <br><br>
+        BAKER'S DOZEN's target audience are adults who enjoy dark humor, satire, and hints of magical realism.
+        The story is told in third person limited from multiple characters' points of view, and although a satire at heart, reads like an espionage thriller.
+        The books that inspired my writing are <i>Sirens of Titan</i>, <i>Catch-22</i>, and <i>The Masquerade of the Red Death Trilogy</i>.
+        <br><br>
+        While BAKER'S DOZEN is being shopped, I'm currently working on my next novel, a two-book fantasy about time-traveling dragons.
+        I'm also brainstorming the scripts for a comedy series about high school teachers (based on true experiences), as well as a cartoon/ anime about a widower General who no longer wants to fight in the war and only wants to go home to his Grandma and his dog.
         </p>
     </section>
     <section id="about">
+        <hr>
         <h2>About</h2>
-        <p>I began writing my first novel when I was sitting at a cubicle at work, bored out of my mind.
-          I didn't realize I was going to write a novel, it just sort of happened.
+        <%= image_tag 'wp.jpg', class: 'small-image-2' %>
+        <p>I began writing my first novel at the age of 23 when I was sitting at a cubicle at work, bored out of my mind.
+          A whole bunch of ideas flooded my brain, and I tried frantically to write them all down.
+          Once I had collected them all neatly on a stack of Post-Its, I went a step further and followed one of the ideas as far as it would take me, and it led me on a 91,000 word journey known as BAKER'S DOZEN.
+          I'm 32 now, so it took me the better part of eight years to write and edit the thing, and I learned tons of techniques and rules along the way.
+          <br><br>
           Boredom is a wonderful thing-- it is the impetus for creativity.
-          And now I also have the plots to two more books, one screenplay, and two series worked out.
+          Dunbar might have been on to something in that hospital with Yossarian...
+          <br><br>
+          I didn't realize I was going to write a novel, it just sort of happened.
+          And now that I've tapped into the wellspring of my literary imagination, I've also penned the plots to two more books and two series.
           I need more time in the day to write!
           <br><br>
           I didn't study creative writing in school, but rather philosophy and science. 
           My propensity for these subjects bleeds through my pen and colors my writing.
-          While I write speculative fiction, all my themes relate to real life.
+          Although I write speculative fiction, the themes in my stories are forever pertinent to real life.
+          Sometimes the best answers to philosophical questions live within a wonderful tale of whimsy.
+          <br><br>
+          Of course, that assumes there are answers to fantastic questions such as, "what the heck am I doing here?"
+          <br><br>
+          When I'm not writing I enjoy working out, surfing, skiing, playing tennis and soccer.
+          I'm a big Avs fan.
+          I also like to watch football, and have two teams--the Broncos and Eagles.
+          Like most NFL fans, I always root for the Cowboys to lose.
+          I also enjoy cooking, spending time with my girlfriend, and petting Hank the Tank (featured at the top of this webpage).
         </p>
     </section>
     <section id="blog">
+        <hr>
         <h2>Blog</h2>
         <p>Check out our latest blog posts.</p>
     </section>
     <section id="contact">
+        <hr>
         <h2>Contact</h2>
         <p>Get in touch with us through this section.</p>
     </section>
   </div>
+
 </body>
 </html>
