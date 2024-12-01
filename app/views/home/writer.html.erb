@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Itim&family=Kalnia+Glaze&family=Kranky&family=Poiret+One&family=Megrim&family=Train+One&family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
     <title>Novelist</title>
     <style>
         body, html {
@@ -203,6 +209,7 @@
 
         #contact {
           color: blue;
+          margin-top: -300px;
         }
 
         .small-image {
@@ -278,6 +285,33 @@
           margin-top: 10px;
           font-size: 14px;
         }
+
+      .flash {
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.flash.notice {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.flash.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.error-message {
+  color: red;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+}
 
     </style>
 </head>
@@ -366,23 +400,49 @@
         <hr>
         <h2>Contact</h2>
         <p style="color: blue; font-family: 'Poiret One', sans-serif; font-size: 24px; display: inline-block;">Get in Touch</p>
-        <%= form_with(url: root_path, method: :post, class: 'form', id: 'contact-form') do |f| %>
+
+        <% if flash[:alert] %>
+          <div class="flash alert" style="color: red; margin-top: 10px;">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+        
+<%= form_with(model: @contact, url: submit_contact_path, method: :post, class: 'form', id: 'contact-form') do |f| %>
         <div class="form-row">
           <%= f.text_field :first_name, placeholder: "First Name", class: "input" %>
           <%= f.text_field :last_name, placeholder: "Last Name", class: "input" %>
+          <% if @contact.errors[:first_name].any? %>
+            <div class="error-message"><%= @contact.errors[:first_name].join(", ") %></div>
+          <% end %>
+          <% if @contact.errors[:last_name].any? %>
+            <div class="error-message"><%= @contact.errors[:last_name].join(", ") %></div>
+          <% end %>
         </div>
         <div class="form-row">
           <%= f.email_field :email, placeholder: "Email", class: "input" %>
-        </div>
+        <% if @contact.errors[:email].any? %>
+          <div class="error-message"><%= @contact.errors[:email].join(", ") %></div>
+        <% end %>
+      </div>
         <div class="form-row">
           <%= f.text_area :message, placeholder: "Type your message here", class: "input textarea" %>
-        </div>
+        <% if @contact.errors[:message].any? %>
+          <div class="error-message"><%= @contact.errors[:message].join(", ") %></div>
+        <% end %>
+      </div>
         <div class="form-row">
           <%= f.submit "Submit", class: "submit-button" %>
         </div>
       <% end %>
-      <p id="success-message" class="success-message" style="display: none;">Thanks for submitting!</p>    </section>
+      <% if flash[:notice] %>
+      <div class="flash notice" style="color: green; margin-top: 10px;">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
+      <p style="color: black; font-family: 'Kalnia Glaze', serif; font-size: 16px; display: inline-block; width: 100%; text-align: center;">
+        Website created by myself, Nathan Trautenberg, using Ruby on Rails.
+      </p>
+    </section>
   </div>
-
 </body>
 </html>
